@@ -1,8 +1,25 @@
 // import the stylesheet. this is necessary so that webpack will compile all the sass into css and then build it into our style.css file
 import './../styles/main.scss';
 
-// import a module from another file.
-import tiy from './app.js';
+import Backbone from 'backbone';
+import $ from 'jquery';
 
-// Looks like the imported module was a function, because here we're executing it!
-tiy();
+const AddEntries = Backbone.View.extend({
+	className: 'entry-wrapper',
+	initialize: function(listEntry) {
+		this.listEntry = listEntry;
+		this.render();
+	},
+	render: function() {
+		let $entry = $('<div />', {text: this.listEntry});
+		this.$el.append($entry);
+	}
+});
+
+$('form').submit((e) => {
+	e.preventDefault;
+	$('.listEntries').append($('.userEntry').value);
+	console.log('whoop');
+});
+
+console.log('noot noot');
